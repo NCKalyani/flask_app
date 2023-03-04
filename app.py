@@ -40,25 +40,23 @@ def create_recipe():
       'description': request.args.get('description')
     }
     recipes.append(recipe)
-    url_for()
     return jsonify(recipe), HTTPStatus.CREATED
-# @app.route('/recipes/<int:recipe_id>', methods=['PUT'])
-# def update_recipe(recipe_id):
-#  recipe = next((recipe for recipe in recipes if recipe['id'] == recipe_
-# id), None)
-#  if not recipe:
-# 20 | Your First Step
-#  return jsonify({'message': 'recipe not found'}), HTTPStatus.NOT_
-# FOUND
-#     data = request.get_json()
-#  recipe.update(
-#  {
-#  'name': data.get('name'),
-#  'description': data.get('description')
-#  }
-#  )
-#  return jsonify(recipe)
+
+
+@app.route('/recipes/<int:recipe_id>', methods=['PUT'])
+def update_recipe(recipe_id):
+    recipe = next((recipe for recipe in recipes if recipe['id'] == recipe_id), None)
+    if not recipe:
+        return jsonify({'message': 'recipe not found'}), HTTPStatus.NOT_FOUND
+        data = request.get_json()
+        recipe.update(
+  {
+   'name': data.get('name'),
+   'description': data.get('description')
+  }
+       )
+    return jsonify(recipe)
 
 
 if __name__ == '__main__':
-    app.run(Debug=True)
+    app.run()
