@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "<h1>welcome to cooking</h1>"
+    return "<h1>welcome to cooking page</h1>"
 
 
 recipes = [
