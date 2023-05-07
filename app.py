@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, request, url_for
 from http import HTTPStatus
+from flask_restful import Resource
+from models.recipe import Recipe, recipes_list
 
-app = Flask(__name__)
 
 
 @app.route("/")
